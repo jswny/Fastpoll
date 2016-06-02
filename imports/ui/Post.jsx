@@ -4,20 +4,33 @@ import { Posts } from '../api/posts.js';
 
 export default class Post extends Component {
 
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			disabled: false
+		};
+	}
+
 	handleClick() {
+		this.setState({ disabled: true });
 		Posts.update(this.props.post._id, {
 			$set: { points: this.props.post.points + 1 }
 		});
 	}
 
+	renderButton() {
+		return this.state.disabled ? 'btn btn-success' : 'btn btn-default';
+	}
+
 	render() {
 		return (
 			<li>
-				<button type="button" className="btn btn-default" onClick={this.handleClick.bind(this)}>
+				<button disabled={ this.state.disabled ? 'disabled' : '' } type="button" className={this.renderButton()} onClick={this.handleClick.bind(this)}>
 					<span className="glyphicon glyphicon-check"></span>
 					{this.props.post.points}
 				</button>
-				<span> {this.props.post.text}</span>
+				<span> { this.props.post.text }</span>
 			</li>
 		);
 	}
