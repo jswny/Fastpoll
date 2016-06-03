@@ -5,7 +5,7 @@
   background: white;
 }
 
-.new-post input {
+.new-option input {
   box-sizing: border-box;
   padding: 10px 0;
   background: transparent;
@@ -15,7 +15,7 @@
   font-size: 1em;
 }
 
-.new-post input:focus {
+.new-option input:focus {
   outline: 0;
 }
 

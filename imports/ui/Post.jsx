@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 
-import { Posts } from '../api/posts.js';
+import { Polls } from '../api/polls.js';
 
 export default class Post extends Component {
 
@@ -28,7 +28,6 @@ export default class Post extends Component {
 			<li>
 				<button disabled={ this.state.disabled ? 'disabled' : '' } type="button" className={this.renderButton()} onClick={this.handleClick.bind(this)}>
 					<span className="glyphicon glyphicon-check"></span>
-					{this.props.post.points}
 				</button>
 				<span> { this.props.post.text }</span>
 			</li>
