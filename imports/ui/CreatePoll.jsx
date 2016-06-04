@@ -1,8 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 import { createContainer } from 'meteor/react-meteor-data';
-// import { FlowRouter } from 'meteor/kadira:flow-router';
-// import { mount } from 'react-mounter';
+import { FlowRouter } from 'meteor/kadira:flow-router';
 
 import ShowPoll from '../ui/ShowPoll.jsx';
 
@@ -52,12 +51,7 @@ export default class CreatePoll extends Component {
 			createdAt: new Date()
 		}, (err, res) => {
 
-			// FlowRouter.route('/p/' + res, {
-			// 	name: 'Show Poll',
-			// 	action() {
-			// 		mount(ShowPoll, {id: res});
-			// 	}
-			// });
+			FlowRouter.go('/p/' + res);
 
 			for(let i = 0; i < this.state.options.length; i++) {
 				let opt = this.state.options[i];
