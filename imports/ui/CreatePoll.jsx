@@ -1,8 +1,13 @@
 import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 import { createContainer } from 'meteor/react-meteor-data';
+// import { FlowRouter } from 'meteor/kadira:flow-router';
+// import { mount } from 'react-mounter';
+
+import ShowPoll from '../ui/ShowPoll.jsx';
 
 import { Polls } from '../api/polls.js';
+import { Options } from '../api/options.js';
 
 export default class CreatePoll extends Component {
 
@@ -21,7 +26,8 @@ export default class CreatePoll extends Component {
 		const text = ReactDOM.findDOMNode(this.refs.textInput).value.trim();
 
 		let newOpt = {
-			text: text
+			text: text,
+			votes: 0
 		}
 
 		let arr = this.state.options.slice();
@@ -43,11 +49,22 @@ export default class CreatePoll extends Component {
 	submitPoll() {
 		Polls.insert({
 			title: this.state.title,
-			options: this.state.options,
 			createdAt: new Date()
-		});
+		}, (err, res) => {
 
-		alert('Poll submitted!');
+			// FlowRouter.route('/p/' + res, {
+			// 	name: 'Show Poll',
+			// 	action() {
+			// 		mount(ShowPoll, {id: res});
+			// 	}
+			// });
+
+			for(let i = 0; i < this.state.options.length; i++) {
+				let opt = this.state.options[i];
+				opt._pollId = res;
+				Options.insert(opt);
+			}
+		});
 	}
 
 	renderOptions() {
