@@ -22,17 +22,20 @@ export default class CreatePoll extends Component {
 	}
 
 	addOption(event) {
+		this.clearErrors();
 		event.preventDefault();
 
 		const text = ReactDOM.findDOMNode(this.refs.textInput).value.trim();
 
 		if (text.length < 1) {
 			let errors = this.state.errors;
+
 			errors.push({
 				disabled: false,
 				text: 'Entry cannot be empty',
 				type: 'danger'
-			})
+			});
+
 			this.setState({ errors: errors });
 			return;
 		}
@@ -59,23 +62,41 @@ export default class CreatePoll extends Component {
 	}
 
 	submitPoll() {
-		if (this.state.title === 'Add a title to your poll') {
-			this.state.title = ReactDOM.findDOMNode(this.refs.titleInput).value.trim();
-		}
+		this.clearErrors();
 
-		Polls.insert({
-			title: this.state.title,
-			createdAt: new Date()
-		}, (err, res) => {
+		let title = ReactDOM.findDOMNode(this.refs.titleInput).value.trim();
+		let defaultTitle = 'Add a title to your poll';
 
-			FlowRouter.go('/p/' + res);
+		if (this.state.title === defaultTitle && title === '') {
+			let errors = this.state.errors;
 
-			for(let i = 0; i < this.state.options.length; i++) {
-				let opt = this.state.options[i];
-				opt._pollId = res;
-				Options.insert(opt);
+			errors.push({
+				disabled: false,
+				text: 'Title cannot be empty',
+				type: 'danger'
+			});
+
+			this.setState({ errors: errors });
+
+		} else {
+			if (this.state.title === defaultTitle) {
+				this.state.title = title;
 			}
-		});
+
+			Polls.insert({
+				title: this.state.title,
+				createdAt: new Date()
+			}, (err, res) => {
+
+				FlowRouter.go('/p/' + res);
+
+				for(let i = 0; i < this.state.options.length; i++) {
+					let opt = this.state.options[i];
+					opt._pollId = res;
+					Options.insert(opt);
+				}
+			});
+		}
 	}
 
 	renderOptions() {
@@ -92,12 +113,16 @@ export default class CreatePoll extends Component {
 		));
 	}
 
+	clearErrors() {
+		this.state.errors = [];
+	}
+
 	render() {
 		return (
 			<div className="container">
 				<header>
 					<h1>
-						<form className="new-option" onSubmit={ this.setPollTitle.bind(this) } >
+						<form className="user-input" onSubmit={ this.setPollTitle.bind(this) } >
 							<input
 								type="text"
 								ref="titleInput"
@@ -106,7 +131,7 @@ export default class CreatePoll extends Component {
 						</form>
 					</h1>
 
-					<form className="new-option" onSubmit={ this.addOption.bind(this) } >
+					<form className="user-input" id="new-option" onSubmit={ this.addOption.bind(this) } >
 						<input
 							type="text"
 							ref="textInput"
