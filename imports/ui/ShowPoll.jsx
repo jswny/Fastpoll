@@ -36,7 +36,11 @@ export default class ShowPoll extends TrackerReact(Component) {
 	}
 
 	options() {
-		return Options.find({ _pollId: this.props.id }).fetch();
+		if (this.state.disableVoting) {
+			return Options.find({ _pollId: this.props.id }, { sort: { votes: -1 } }).fetch();
+		} else {
+			return Options.find({ _pollId: this.props.id }).fetch();
+		}
 	}
 
 	poll() {

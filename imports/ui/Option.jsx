@@ -20,7 +20,7 @@ export default class Option extends Component {
 			<li>
 				<button disabled={ this.props.votingDisabled ? 'disabled' : '' } type="button" className={ this.renderButton() } onClick={ this.vote.bind(this) }>
 					<span className="glyphicon glyphicon-check"></span>
-					{ this.props.option.votes }
+					{ this.props.votingDisabled ? ' ' + this.props.option.votes : '' }
 				</button>
 				<span> { this.props.option.text }</span>
 			</li>
