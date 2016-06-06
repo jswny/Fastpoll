@@ -46,6 +46,11 @@ export default class CreatePoll extends Component {
 	}
 
 	submitPoll() {
+
+		if (this.state.title === 'Add a title to your poll') {
+			this.state.title = ReactDOM.findDOMNode(this.refs.titleInput).value.trim();
+		}
+
 		Polls.insert({
 			title: this.state.title,
 			createdAt: new Date()
