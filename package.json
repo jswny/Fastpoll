@@ -9,6 +9,7 @@
     "react": "^15.1.0",
     "react-addons-pure-render-mixin": "^15.1.0",
     "react-dom": "^15.1.0",
+    "react-keyframes": "^0.2.1",
     "react-mounter": "^1.2.0"
   }
 }

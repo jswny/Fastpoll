@@ -16,7 +16,6 @@ export default class CreatePoll extends Component {
 
 		this.state = {
 			errors: [],
-			title: 'Add a title to your poll',
 			options: []
 		}
 	}
@@ -56,9 +55,9 @@ export default class CreatePoll extends Component {
 	setPollTitle(event) {
 		event.preventDefault();
 
-		const text = ReactDOM.findDOMNode(this.refs.titleInput).value.trim();
+		// const text = ReactDOM.findDOMNode(this.refs.titleInput).value.trim();
 
-		this.setState({title: text});
+		// this.setState({title: text});
 	}
 
 	submitPoll() {
@@ -67,7 +66,7 @@ export default class CreatePoll extends Component {
 		let title = ReactDOM.findDOMNode(this.refs.titleInput).value.trim();
 		let defaultTitle = 'Add a title to your poll';
 
-		if (this.state.title === defaultTitle && title === '') {
+		if (title === '') {
 			let errors = this.state.errors;
 
 			errors.push({
@@ -79,12 +78,8 @@ export default class CreatePoll extends Component {
 			this.setState({ errors: errors });
 
 		} else {
-			if (this.state.title === defaultTitle) {
-				this.state.title = title;
-			}
-
 			Polls.insert({
-				title: this.state.title,
+				title: title,
 				createdAt: new Date()
 			}, (err, res) => {
 
@@ -126,7 +121,7 @@ export default class CreatePoll extends Component {
 							<input
 								type="text"
 								ref="titleInput"
-								placeholder={ this.state.title }
+								placeholder="Add a title to your poll"
 							/>
 						</form>
 					</h1>
