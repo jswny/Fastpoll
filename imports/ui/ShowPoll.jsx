@@ -9,9 +9,20 @@ import Option from './Option.jsx';
 
 export default class ShowPoll extends TrackerReact(Component) {
 
+	constructor(props) {
+		super(props);
+		this.state = {
+			disableVoting: false
+		}
+	}
+
+	toggleVoting() {
+		this.setState({disableVoting: !this.state.disableVoting});
+	}
+
 	renderOptions() {
 		return this.options().map((option) => (
-			<Option key={ option._id } option={ option }/>
+			<Option key={ option._id } option={ option } votingDisabled={ this.state.disableVoting } toggleVoting={ this.toggleVoting.bind(this) }/>
 		));
 	}
 
