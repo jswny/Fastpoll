@@ -4,6 +4,7 @@ import { createContainer } from 'meteor/react-meteor-data';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 
 import ShowPoll from '../ui/ShowPoll.jsx';
+import Error from '../ui/Error.jsx';
 
 import { Polls } from '../api/polls.js';
 import { Options } from '../api/options.js';
@@ -14,6 +15,7 @@ export default class CreatePoll extends Component {
 		super(props);
 
 		this.state = {
+			errors: [],
 			title: 'Add a title to your poll',
 			options: []
 		}
@@ -24,6 +26,17 @@ export default class CreatePoll extends Component {
 
 		const text = ReactDOM.findDOMNode(this.refs.textInput).value.trim();
 
+		if (text.length < 1) {
+			let errors = this.state.errors;
+			errors.push({
+				disabled: false,
+				text: 'Entry cannot be empty',
+				type: 'danger'
+			})
+			this.setState({ errors: errors });
+			return;
+		}
+
 		let newOpt = {
 			text: text,
 			votes: 0
@@ -32,7 +45,7 @@ export default class CreatePoll extends Component {
 		let arr = this.state.options.slice();
 		arr.push(newOpt);
 
-		this.setState({options: arr});
+		this.setState({ options: arr });
 
 		ReactDOM.findDOMNode(this.refs.textInput).value = '';
 	}
@@ -46,7 +59,6 @@ export default class CreatePoll extends Component {
 	}
 
 	submitPoll() {
-
 		if (this.state.title === 'Add a title to your poll') {
 			this.state.title = ReactDOM.findDOMNode(this.refs.titleInput).value.trim();
 		}
@@ -74,6 +86,12 @@ export default class CreatePoll extends Component {
 		));
 	}
 
+	renderErrors() {
+		return this.state.errors.map((error, index) => (
+			<Error key={ index } error={ error }/> 
+		));
+	}
+
 	render() {
 		return (
 			<div className="container">
@@ -95,6 +113,7 @@ export default class CreatePoll extends Component {
 							placeholder="Type to add a new option"
 						/>
 					</form>
+					{ this.renderErrors() }
 				</header>
 
 				<ul>
