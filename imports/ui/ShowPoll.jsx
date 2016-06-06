@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
+import { Keyframes, Frame } from 'react-keyframes';
 
 import { Polls } from '../api/polls.js';
 import { Options } from '../api/options.js';
@@ -53,7 +54,12 @@ export default class ShowPoll extends TrackerReact(Component) {
 			return (
 				<div className="container">
 					<header>
-						<h1>Loading...</h1>
+						<Keyframes component="h1" loop={ true }>
+							<Frame>Loading -</Frame>
+							<Frame>Loading \</Frame>
+							<Frame>Loading |</Frame>
+							<Frame>Loading /</Frame>
+						</Keyframes>
 					</header>
 				</div>
 			);
