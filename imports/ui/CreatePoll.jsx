@@ -116,7 +116,7 @@ export default class CreatePoll extends Component {
 					{ this.renderErrors() }
 				</header>
 
-				<ul>
+				<ul id="options-table">
 					{ this.renderOptions() }
 				</ul>
 

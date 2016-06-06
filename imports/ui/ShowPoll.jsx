@@ -65,7 +65,7 @@ export default class ShowPoll extends TrackerReact(Component) {
 						<h1>{ poll.title }</h1>
 					</header>
 
-					<ul>
+					<ul id="options-table">
 						{ this.renderOptions() }
 					</ul>
 				</div>

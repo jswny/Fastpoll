@@ -19,13 +19,13 @@
   outline: 0;
 }
 
-ul {
+#options-table {
   margin: 0;
   padding: 0;
   background: white;
 }
 
-li {
+#options-table > li {
   position: relative;
   padding-top: 15px;
   padding-bottom: 15px;
@@ -33,6 +33,11 @@ li {
   border-bottom: #eee solid 1px;
 }
 
-li:last-child {
+#options-table li:last-child {
   border: none !important;
+}
+
+#navigation {
+  background-color: inherit;
+  border: none;
 }
