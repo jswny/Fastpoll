@@ -4,16 +4,7 @@ import { Options } from '../api/options.js';
 
 export default class Option extends Component {
 
-	constructor(props) {
-		super(props);
-
-		this.state = {
-			disabled: false
-		};
-	}
-
 	vote() {
-		this.setState({ disabled: true });
 		this.props.toggleVoting();
 		Options.update(this.props.option._id, {
 			$set: { votes: this.props.option.votes + 1 }
@@ -27,7 +18,7 @@ export default class Option extends Component {
 	render() {
 		return (
 			<li>
-				<button disabled={ this.props.votingDisabled ? 'disabled' : '' } type="button" className={this.renderButton()} onClick={this.props.toggleVoting}>
+				<button disabled={ this.props.votingDisabled ? 'disabled' : '' } type="button" className={ this.renderButton() } onClick={ this.vote.bind(this) }>
 					<span className="glyphicon glyphicon-check"></span>
 					{ this.props.option.votes }
 				</button>

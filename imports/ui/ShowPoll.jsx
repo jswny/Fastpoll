@@ -11,13 +11,22 @@ export default class ShowPoll extends TrackerReact(Component) {
 
 	constructor(props) {
 		super(props);
+		let disableVoting;
+		if (localStorage.getItem('userVoted-' + this.props.id) === null) {
+			disableVoting = false;
+		} else {
+			disableVoting = localStorage.getItem('userVoted-' + this.props.id);
+		}
+
 		this.state = {
-			disableVoting: false
+			disableVoting: disableVoting
 		}
 	}
 
 	toggleVoting() {
-		this.setState({disableVoting: !this.state.disableVoting});
+		localStorage.setItem('userVoted-' + this.props.id, !this.state.disableVoting);
+		this.setState({ disableVoting: !this.state.disableVoting });
+		console.log(localStorage.getItem('userVoted-' + this.props.id));
 	}
 
 	renderOptions() {
