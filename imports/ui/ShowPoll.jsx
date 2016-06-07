@@ -27,7 +27,6 @@ export default class ShowPoll extends TrackerReact(Component) {
 	toggleVoting() {
 		localStorage.setItem('userVoted-' + this.props.id, !this.state.disableVoting);
 		this.setState({ disableVoting: !this.state.disableVoting });
-		console.log(localStorage.getItem('userVoted-' + this.props.id));
 	}
 
 	renderOptions() {

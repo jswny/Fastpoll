@@ -6,9 +6,7 @@ export default class Option extends Component {
 
 	vote() {
 		this.props.toggleVoting();
-		Options.update(this.props.option._id, {
-			$set: { votes: this.props.option.votes + 1 }
-		});
+		Meteor.call('options.vote', this.props.option._id);
 	}
 
 	renderButton() {

@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
+import { Meteor } from 'meteor/meteor';
 import { createContainer } from 'meteor/react-meteor-data';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 
@@ -39,10 +40,7 @@ export default class CreatePoll extends Component {
 			return;
 		}
 
-		let newOpt = {
-			text: text,
-			votes: 0
-		}
+		let newOpt = text;
 
 		let arr = this.state.options.slice();
 		arr.push(newOpt);
@@ -54,10 +52,6 @@ export default class CreatePoll extends Component {
 
 	setPollTitle(event) {
 		event.preventDefault();
-
-		// const text = ReactDOM.findDOMNode(this.refs.titleInput).value.trim();
-
-		// this.setState({title: text});
 	}
 
 	submitPoll() {
@@ -78,17 +72,12 @@ export default class CreatePoll extends Component {
 			this.setState({ errors: errors });
 
 		} else {
-			Polls.insert({
-				title: title,
-				createdAt: new Date()
-			}, (err, res) => {
-
-				FlowRouter.go('/p/' + res);
-
+			Meteor.call('polls.insert', title, (error, pollId) => {
+				FlowRouter.go('/p/' + pollId);
+				
 				for(let i = 0; i < this.state.options.length; i++) {
 					let opt = this.state.options[i];
-					opt._pollId = res;
-					Options.insert(opt);
+					Meteor.call('options.insert', pollId, opt);
 				}
 			});
 		}
@@ -97,7 +86,7 @@ export default class CreatePoll extends Component {
 	renderOptions() {
 		return this.state.options.map((option, index) => (
 			<li key={ index }>
-				<span>{ option.text }</span>
+				<span>{ option }</span>
 			</li>
 		));
 	}
