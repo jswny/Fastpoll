@@ -20,8 +20,17 @@ export default class ShowPoll extends TrackerReact(Component) {
 		}
 
 		this.state = {
+			subscription: {
+				polls: Meteor.subscribe('polls'),
+				options: Meteor.subscribe('options')
+			},
 			disableVoting: disableVoting
 		}
+	}
+
+	componentWillUnmount() {
+		this.state.subscription.polls.stop();
+		this.state.subscription.options.stop();
 	}
 
 	toggleVoting() {

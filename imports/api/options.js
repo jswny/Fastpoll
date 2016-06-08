@@ -4,6 +4,12 @@ import { check } from 'meteor/check';
 
 export const Options = new Mongo.Collection('options');
 
+if (Meteor.isServer) {
+	Meteor.publish('options', function optionsPublication() {
+		return Options.find();
+	});
+}
+
 Meteor.methods({
 	'options.insert'(pollId, text) {
 		check(pollId, String);
