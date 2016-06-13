@@ -1,5 +1,5 @@
 {
-  "name": "yak",
+  "name": "fastpoll",
   "private": true,
   "scripts": {
     "start": "meteor run"
