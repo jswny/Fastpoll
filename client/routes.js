@@ -5,6 +5,12 @@ import { mount } from 'react-mounter';
 import CreatePoll from '../imports/ui/CreatePoll.jsx';
 import ShowPoll from '../imports/ui/ShowPoll.jsx';
 
+FlowRouter.route('/', {
+	action() {
+		FlowRouter.go('/new');
+	}
+});
+
 FlowRouter.route('/new', {
 	name: 'New Poll',
 	action() {
