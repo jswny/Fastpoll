@@ -45,3 +45,7 @@
   background-color: inherit;
   border: none;
 }
+
+#title-input {
+  padding-right: 0px;
+}

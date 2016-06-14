@@ -58,7 +58,7 @@ export default class ShowPoll extends TrackerReact(Component) {
 
 	render() {
 		let poll = this.poll();
-		if(poll.length < 1) {
+		if (poll.length < 1) {
 			return (
 				<div className="container">
 					<header>

@@ -107,6 +107,7 @@ export default class CreatePoll extends Component {
 					<h1>
 						<form className="user-input" onSubmit={ this.setPollTitle.bind(this) } >
 							<input
+								id="title-input"
 								type="text"
 								ref="titleInput"
 								placeholder="Add a title to your poll"
