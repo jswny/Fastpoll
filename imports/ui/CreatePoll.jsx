@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import { Meteor } from 'meteor/meteor';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 
-import ShowPoll from '../ui/ShowPoll.jsx';
-import Error from '../ui/Error.jsx';
+import ShowPoll from './ShowPoll.jsx';
+import Error from './Error.jsx';
 
 import { Polls } from '../api/polls.js';
 import { Options } from '../api/options.js';

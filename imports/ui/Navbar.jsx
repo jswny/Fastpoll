@@ -5,20 +5,20 @@ export default class Navbar extends Component {
 
 	render() {
 		return (
-			<nav class="navbar navbar-default" id="navigation">
-			  <div class="container-fluid">
-			    <div class="navbar-header">
-			    	<a class="navbar-brand" href="/">Fastpoll</a>
-			    </div>
-			    <div class="collapse navbar-collapse">
-			    	<ul class="nav navbar-nav">
-			    		<li>
-					    	<a href="/new">New Poll</a>
-			    		</li>
-			    	</ul>
-			    </div>
-			  </div>
-			</nav>
+				<nav className="navbar navbar-default" id="navigation">
+					<div className="container-fluid">
+						<div className="navbar-header">
+							<a className="navbar-brand" href="/">Fastpoll</a>
+						</div>
+						<div className="collapse navbar-collapse">
+							<ul className="nav navbar-nav">
+								<li>
+									<a href="/new">New Poll</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</nav>
 		);
 	}
 }
