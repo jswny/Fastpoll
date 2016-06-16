@@ -60,7 +60,7 @@ export default class ShowPoll extends TrackerReact(Component) {
 		let poll = this.poll();
 		if (poll.length < 1) {
 			return (
-				<div className="container">
+				<div>
 					<header>
 						<Keyframes component="h1" loop={ true }>
 							<Frame>Loading -</Frame>
@@ -74,7 +74,7 @@ export default class ShowPoll extends TrackerReact(Component) {
 		} else {
 			poll = poll[0];
 			return (
-				<div className="container">
+				<div>
 					<header>
 						<h1>{ poll.title }</h1>
 					</header>

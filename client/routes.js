@@ -6,6 +6,7 @@ import CreatePoll from '../imports/ui/CreatePoll.jsx';
 import ShowPoll from '../imports/ui/ShowPoll.jsx';
 import Navbar from '../imports/ui/Navbar.jsx';
 import Layout from '../imports/ui/Layout.jsx';
+import About from '../imports/ui/About.jsx';
 
 FlowRouter.route('/', {
 	action() {
@@ -29,6 +30,16 @@ FlowRouter.route('/p/:id', {
 		mount(Layout, {
 			header: <Navbar />,
 			content: <ShowPoll id={ params.id }/>
+		});
+	}
+});
+
+FlowRouter.route('/about', {
+	name: 'Show Poll',
+	action(params) {
+		mount(Layout, {
+			header: <Navbar />,
+			content: <About />
 		});
 	}
 });

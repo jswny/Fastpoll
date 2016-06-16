@@ -102,7 +102,7 @@ export default class CreatePoll extends Component {
 
 	render() {
 		return (
-			<div className="container">
+			<div>
 				<header>
 					<h1>
 						<form className="user-input" onSubmit={ this.setPollTitle.bind(this) } >
