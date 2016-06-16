@@ -15,6 +15,9 @@ export default class Navbar extends Component {
 								<li>
 									<a href="/new">New Poll</a>
 								</li>
+								<li>
+									<a href="/about">About</a>
+								</li>
 							</ul>
 						</div>
 					</div>
