@@ -63,7 +63,7 @@ export default class ShowPoll extends TrackerReact(Component) {
 				<div className="section">
 					<div className="card-panel">
 						<div className="row">
-							<div className="col s6">
+							<div className="col s12 l6">
 								<Keyframes component="h3" loop={ true }>
 									<Frame>Loading -</Frame>
 									<Frame>Loading \</Frame>
@@ -81,7 +81,7 @@ export default class ShowPoll extends TrackerReact(Component) {
 				<div className="section">
 					<div className="card-panel">
 						<div className="row">
-							<div className="col s6">
+							<div className="col s12 l6">
 								<h3>{ poll.title }</h3>
 								<ul className="collection">
 									{ this.renderOptions() }

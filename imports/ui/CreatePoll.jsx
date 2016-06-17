@@ -107,7 +107,7 @@ export default class CreatePoll extends Component {
 					<div className="row">
 						<form className="col s12" onSubmit={ this.setPollTitle.bind(this) }>
 							<div className="row">
-						    <div className="input-field col s6">
+						    <div className="input-field col s12 l6">
 						      <input id="poll-title" type="text" className="validate" ref="titleInput"/>
 						      <label for="poll-title">Poll title</label>
 						    </div>
@@ -118,7 +118,7 @@ export default class CreatePoll extends Component {
 					<div className="row">
 						<form className="col s12" onSubmit={ this.addOption.bind(this) }>
 							<div className="row">
-						    <div className="input-field col s6">
+						    <div className="input-field col s12 l6">
 						      <input id="poll-option" type="text" className="validate" ref="textInput"/>
 						      <label for="poll-option">Add a new option</label>
 						    </div>
@@ -129,7 +129,7 @@ export default class CreatePoll extends Component {
 					{ this.renderErrors() }
 
 					<div className="row">
-						<div className="col s6">
+						<div className="col s12 l6">
 							<ul className="collection">
 								{ this.renderOptions() }
 							</ul>
