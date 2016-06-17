@@ -105,25 +105,19 @@ export default class CreatePoll extends Component {
 				<div className="card-panel">
 				
 					<div className="row">
-						<form className="col s12" onSubmit={ this.setPollTitle.bind(this) }>
-							<div className="row">
-						    <div className="input-field col s12 l6">
-						      <input id="poll-title" type="text" className="validate" ref="titleInput"/>
-						      <label for="poll-title">Poll title</label>
-						    </div>
-						  </div>
-					  </form>
+						<div className="input-field col s12 l6">
+							<input id="poll-title" type="text" className="validate" ref="titleInput"/>
+							<label for="poll-title">Poll title</label>
+						</div>
 					</div>
 
 					<div className="row">
-						<form className="col s12" onSubmit={ this.addOption.bind(this) }>
-							<div className="row">
-						    <div className="input-field col s12 l6">
-						      <input id="poll-option" type="text" className="validate" ref="textInput"/>
-						      <label for="poll-option">Add a new option</label>
-						    </div>
-						  </div>
-					  </form>
+						<form className="col s12 l6" onSubmit={ this.addOption.bind(this) }>
+							<div className="input-field">
+								<input id="poll-option" type="text" className="validate" ref="textInput"/>
+								<label for="poll-option">Add a new option</label>
+							</div>
+						</form>
 					</div>
 
 					{ this.renderErrors() }
