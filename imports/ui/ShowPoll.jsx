@@ -60,28 +60,35 @@ export default class ShowPoll extends TrackerReact(Component) {
 		let poll = this.poll();
 		if (poll.length < 1) {
 			return (
-				<div>
-					<header>
-						<Keyframes component="h1" loop={ true }>
-							<Frame>Loading -</Frame>
-							<Frame>Loading \</Frame>
-							<Frame>Loading |</Frame>
-							<Frame>Loading /</Frame>
-						</Keyframes>
-					</header>
+				<div className="section">
+					<div className="card-panel">
+						<div className="row">
+							<div className="col s6">
+								<Keyframes component="h3" loop={ true }>
+									<Frame>Loading -</Frame>
+									<Frame>Loading \</Frame>
+									<Frame>Loading |</Frame>
+									<Frame>Loading /</Frame>
+								</Keyframes>
+							</div>
+						</div>
+					</div>
 				</div>
 			);
 		} else {
 			poll = poll[0];
 			return (
-				<div>
-					<header>
-						<h1>{ poll.title }</h1>
-					</header>
-
-					<ul id="options-table">
-						{ this.renderOptions() }
-					</ul>
+				<div className="section">
+					<div className="card-panel">
+						<div className="row">
+							<div className="col s6">
+								<h3>{ poll.title }</h3>
+								<ul className="collection">
+									{ this.renderOptions() }
+								</ul>
+							</div>
+						</div>
+					</div>
 				</div>
 			);
 		}

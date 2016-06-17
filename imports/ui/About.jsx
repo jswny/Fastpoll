@@ -10,7 +10,7 @@ export default class About extends Component {
 					<h1>About</h1>
 				</header>
 
-				<p className="large-font">
+				<p>
 					<strong>Fastpoll</strong> strives to be the fastest, simplest polling service on the net.
 					This service is currently in <strong>beta</strong> and is under active development. Thus, 
 					Fastpoll should not be used in any mission-critical envrionment (but you already knew that).

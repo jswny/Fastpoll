@@ -5,19 +5,13 @@ export default class Navbar extends Component {
 
 	render() {
 		return (
-				<nav className="navbar navbar-default" id="navigation">
-					<div className="container-fluid">
-						<div className="navbar-header">
-							<a className="navbar-brand" href="/">Fastpoll</a>
-						</div>
-						<div className="collapse navbar-collapse">
-							<ul className="nav navbar-nav">
-								<li>
-									<a href="/new">New Poll</a>
-								</li>
-								<li>
-									<a href="/about">About</a>
-								</li>
+				<nav>
+					<div className="nav-wrapper">
+						<div className="col s12" id="navigation">
+							<a href="/" className="brand-logo">Fastpoll</a>
+							<ul id="nav-mobile" className="right hide-on-med-and-down">
+								<li><a href="/new">New Poll</a></li>
+								<li><a href="/about">About</a></li>
 							</ul>
 						</div>
 					</div>

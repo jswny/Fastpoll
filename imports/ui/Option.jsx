@@ -10,17 +10,21 @@ export default class Option extends Component {
 	}
 
 	renderButton() {
-		return this.props.votingDisabled ? 'btn btn-success' : 'btn btn-default';
+		return this.props.votingDisabled ? 'waves-effect waves-light btn disabled' : 'waves-effect waves-light btn';
 	}
 
 	render() {
 		return (
-			<li>
-				<button disabled={ this.props.votingDisabled ? 'disabled' : '' } type="button" className={ this.renderButton() } onClick={ this.vote.bind(this) }>
-					<span className="glyphicon glyphicon-check"></span>
-					{ this.props.votingDisabled ? ' ' + this.props.option.votes : '' }
-				</button>
-				<span> { this.props.option.text }</span>
+			<li className="collection-item">
+				<div>
+					<button className={ this.renderButton() } disabled={ this.props.votingDisabled ? 'disabled' : '' } onClick={ this.vote.bind(this) }>
+						<i className="material-icons left">done</i>
+						{ this.props.votingDisabled ? ' ' + this.props.option.votes : '' }
+					</button>
+					<span className="option-text">
+						{ this.props.option.text }
+					</span>
+				</div>
 			</li>
 		);
 	}

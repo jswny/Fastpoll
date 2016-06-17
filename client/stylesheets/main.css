@@ -1,55 +1,7 @@
-.container {
-  max-width: 600px;
-  margin: 0 auto;
-  min-height: 100%;
-  background: white;
-}
-
-#new-option {
-  padding-bottom: 15px;
-}
-
-.user-input input {
-  box-sizing: border-box;
-  padding: 10px 0;
-  background: transparent;
-  border: none;
-  width: 100%;
-  padding-right: 80px;
-  font-size: 1em;
-}
-
-.user-input input:focus {
-  outline: 0;
-}
-
-#options-table {
-  margin: 0;
-  padding: 0;
-  background: white;
-}
-
-#options-table > li {
-  position: relative;
-  padding-top: 15px;
-  padding-bottom: 15px;
-  list-style: none;
-  border-bottom: #eee solid 1px;
-}
-
-#options-table li:last-child {
-  border: none !important;
+.option-text {
+  padding-left: 15px;
 }
 
 #navigation {
-  background-color: inherit;
-  border: none;
-}
-
-#title-input {
-  padding-right: 0px;
-}
-
-.large-font {
-  font-size: 16px;
+  padding: 0 0.75rem;
 }

@@ -57,7 +57,6 @@ export default class CreatePoll extends Component {
 		this.clearErrors();
 
 		let title = ReactDOM.findDOMNode(this.refs.titleInput).value.trim();
-		let defaultTitle = 'Add a title to your poll';
 
 		if (title === '') {
 			let errors = this.state.errors;
@@ -84,8 +83,8 @@ export default class CreatePoll extends Component {
 
 	renderOptions() {
 		return this.state.options.map((option, index) => (
-			<li key={ index }>
-				<span>{ option }</span>
+			<li className="collection-item" key={ index }>
+				{ option }
 			</li>
 		));
 	}
@@ -102,37 +101,46 @@ export default class CreatePoll extends Component {
 
 	render() {
 		return (
-			<div>
-				<header>
-					<h1>
-						<form className="user-input" onSubmit={ this.setPollTitle.bind(this) } >
-							<input
-								id="title-input"
-								type="text"
-								ref="titleInput"
-								placeholder="Add a title to your poll"
-							/>
-						</form>
-					</h1>
+			<div className="section">
+				<div className="card-panel">
+				
+					<div className="row">
+						<form className="col s12" onSubmit={ this.setPollTitle.bind(this) }>
+							<div className="row">
+						    <div className="input-field col s6">
+						      <input id="poll-title" type="text" className="validate" ref="titleInput"/>
+						      <label for="poll-title">Poll title</label>
+						    </div>
+						  </div>
+					  </form>
+					</div>
 
-					<form className="user-input" id="new-option" onSubmit={ this.addOption.bind(this) } >
-						<input
-							type="text"
-							ref="textInput"
-							placeholder="Type to add a new option"
-						/>
-					</form>
+					<div className="row">
+						<form className="col s12" onSubmit={ this.addOption.bind(this) }>
+							<div className="row">
+						    <div className="input-field col s6">
+						      <input id="poll-option" type="text" className="validate" ref="textInput"/>
+						      <label for="poll-option">Add a new option</label>
+						    </div>
+						  </div>
+					  </form>
+					</div>
+
 					{ this.renderErrors() }
-				</header>
 
-				<ul id="options-table">
-					{ this.renderOptions() }
-				</ul>
+					<div className="row">
+						<div className="col s6">
+							<ul className="collection">
+								{ this.renderOptions() }
+							</ul>
+						</div>
+					</div>
 
-				<button type="button" className="btn btn-success" onClick={ this.submitPoll.bind(this) }>
-					<span className="glyphicon glyphicon-ok"></span>
-					<span> Submit</span>
-				</button>
+					<button className="btn waves-effect waves-light" onClick={ this.submitPoll.bind(this) }>
+						Submit
+						<i className="material-icons right">send</i>
+					</button>
+				</div>
 			</div>
 		);
 	}
