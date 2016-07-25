@@ -1,6 +1,12 @@
 # Fastpoll
 Fastpoll is a simple polling app built using Meteor and React. It was created to be extremely simple, not bulletproof.
 
+## Screenshots
+![Desktop new poll](http://i.imgur.com/ElmOdI3.png "Desktop new poll")
+![Desktop show poll](http://i.imgur.com/6AY8rlA.png "Desktop show poll")
+![Mobile new poll](http://i.imgur.com/YL5jPfZ.png "Mobile new poll")
+![Mobile show poll](http://i.imgur.com/s8cAoRn.png "Desktop show poll")
+
 ## Components
 - Node modules
   - `react` - React.js
